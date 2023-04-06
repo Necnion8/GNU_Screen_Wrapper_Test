@@ -6,7 +6,6 @@ import subprocess
 import gnuscreen_reader as screen
 
 # create virtual tty
-
 master, slave = pty.openpty()
 
 # start child process (with screen)

@@ -4,7 +4,6 @@ import subprocess
 import gnuscreen_reader as screen
 
 # create virtual tty
-
 master, slave = pty.openpty()
 
 # start child process (with screen)
@@ -14,7 +13,6 @@ p = subprocess.Popen(
 )
 
 # read data
-
-# for line in screen.read(master, cls=screen.LineTermReadParser):  # with beta line reader
+#for line in screen.read(master, cls=screen.LineTermReadParser):  # with beta line reader
 for chunk in screen.read(master):
     print(chunk)
