@@ -8,9 +8,12 @@ import gnuscreen_reader as screen
 master, slave = pty.openpty()
 
 # start child process (with screen)
+env = dict(os.environ)
+env["TERM"] = "vt100"
 p = subprocess.Popen(
     "screen -S example java -Xmx1G -Xms1G -jar paper-1.8.8-445.jar",
-    stdin=slave, stdout=slave, stderr=slave, close_fds=True, shell=True, cwd="../"
+    stdin=slave, stdout=slave, stderr=slave, close_fds=True, shell=True, cwd="../",
+    env=env,
 )
 os.close(slave)
 
